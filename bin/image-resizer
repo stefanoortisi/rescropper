@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+argv  			= require( 'minimist' )( process.argv.slice(2));
+
+ImageResizer = require( "../dist/index.js" );
+
+resizer = new ImageResizer();
+	
+if (typeof argv.c == "undefined" ) {
+    console.error('ERROR: Config file missing. Parameter -c required.');
+} else {
+	resizer.resize( argv );
+}

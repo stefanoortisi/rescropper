@@ -1,0 +1,7 @@
+{
+	"source" : "./raw",
+	"dest_resized" : "./resize/1000",
+	"width_resized" : 1000,
+	"dest_cropped" : "./resize/200",
+	"width_cropped" : 200
+}
