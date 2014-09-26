@@ -1,12 +1,10 @@
 {
-  "name": "live-spritesheet",
+  "name": "resizer-cropper",
   "version": "0.0.1",
   "author": "Stefano Ortisi <stefanoortisi@gmail.com>",
   "description": "A Command Line Image resizer script",
   "keywords": [
-    "spritesheet",
-    "live",
-    "node-spritesheet"
+    "resizer", "image", "cropper"
   ],
   "main": "index.js",
   "dirs": "src",
@@ -15,29 +13,21 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "image-resizer": "bin/image-resizer"
+    "image-resizer": "bin/resizer-cropper"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stefanoortisi/live-spritesheet"
+    "url": "https://github.com/stefanoortisi/rescropper"
   },
   "engines": {
     "node": ">= 0.10"
   },
   "dependencies": {
-    "async": "~0.1.22",
-    "fs-util": "*",
     "happens": "~0.5.0",
-    "lodash-node": "*",
-    "minimist": "*",
-    "q-fs": "~0.1.32",
-    "underscore": "~1.4.2"
+    "minimist": "*"
   },
   "devDependencies": {
-    "chai": "1.7.x",
-    "chai-fs": "0.0.3",
     "coffee-script": "1.6.x",
-    "easyimage": "^1.0.2",
-    "mocha": "1.12.x"
+    "easyimage": "^1.0.2"
   }
 }

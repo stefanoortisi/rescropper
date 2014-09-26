@@ -1,4 +1,4 @@
-BIN=./bin/image-resizer
+BIN=./bin/resizer-cropper
 MOCHA=./node_modules/mocha/bin/mocha
 COFFEE=./node_modules/.bin/coffee
 VERSION=0.2.3

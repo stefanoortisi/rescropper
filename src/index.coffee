@@ -1,6 +1,4 @@
-_        		= require( 'lodash-node' );
 path 			= require( 'path' );
-fsu      		= require( 'fs-util' );
 fs      		= require( 'fs' );
 argv  			= require( 'minimist' )( process.argv.slice(2));
 happens 		= require 'happens'
@@ -16,7 +14,9 @@ module.exports = class ImageResizer
 
 	resize: ( config ) ->
 
-		@config = require config.c
+		config_path = path.join( process.cwd(), config.c)
+
+		@config = require config_path
 
 
 		# Normalize config paths
@@ -30,12 +30,15 @@ module.exports = class ImageResizer
 		# Get the files from the source
 		@raw = @get_files_from_dir @config.source
 
+		console.log "###############"
+		console.log "Images to resize and crop: " + @raw.length
+		console.log "###############"
 		@counter = 0
 
 		@next_tick()
 
 	next_tick: ( ) =>
-		if @counter < @raw.length - 1
+		if @counter < @raw.length
 
 			image = @raw[ @counter++ ]
 
@@ -45,13 +48,9 @@ module.exports = class ImageResizer
 				w = file.width
 				h = file.height
 				# step 1: Resize the image
-
 				@resize_img image, w, h, =>
-
-					console.log "resized."
-					@crop_image image, w, h, =>
-						console.log "cropped."
-						@next_tick()
+					# step 2: Crop the image
+					@crop_image image, w, h, @next_tick
 
 
 			, (err) ->
@@ -118,10 +117,6 @@ module.exports = class ImageResizer
 			console.log(err);
 			callback()
 
-				
-		
-
-		
 
 	get_files_from_dir: ( dir ) ->
 		unless fs.existsSync dir
@@ -150,13 +145,6 @@ module.exports = class ImageResizer
 		unless fs.existsSync obj[ prop ]
 			fs.mkdirSync obj[ prop ]
 
-
-	check_filename: ( test ) ->
-		if test.indexOf( "/" ) != -1
-			console.error( 'ERROR: '+ test +' needs to be a filename and not a path.' );
-			return false
-		return true	
-	
 
 	error: ( message ) ->
 		console.error message
