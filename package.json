@@ -13,7 +13,7 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "image-resizer": "bin/resizer-cropper"
+    "image-resizer": "./bin/resizer-cropper"
   },
   "repository": {
     "type": "git",
