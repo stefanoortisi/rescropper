@@ -54,4 +54,4 @@ Where:
 
 ## TODO
 
-- Improve error management (when files in config.json dont't exist)
+- Improve error management (when files in config.json don't exist)
